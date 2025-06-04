@@ -10,7 +10,7 @@
     <p id="output">Loading...</p>
 
     <script>
-        fetch('http://54.179.70.105:8080/api/hello')
+        fetch('http://54.179.70.105:8080/api')
         .then(res => res.json())
         .then(data => {
             document.getElementById('output').textContent = data.message;
