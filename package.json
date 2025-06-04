@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "docker:deploy": "docker build -t fahdira/frontend-uas . && docker push fahdira/frontend-uas"
+  }
+}
