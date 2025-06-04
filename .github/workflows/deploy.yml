@@ -1,4 +1,4 @@
-name: Deploy to AWS EC2 UTS-Cloud
+name: Deploy to AWS EC2 frontend-uas
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Deploy to ECS
+    - name: Deploy to ECS frontend
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_IP }} << 'EOF'
         sudo docker pull fahdira/frontend-uas

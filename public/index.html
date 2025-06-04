@@ -1,1 +1,24 @@
-<h1>Hello World this is Frontend!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Frontend App</h1>
+    <p id="output">Loading...</p>
+
+    <script>
+        fetch('http://54.179.70.105:8080/api/hello')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('output').textContent = data.message;
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById('output').textContent = 'Failed to fetch.';
+        });
+    </script>
+</body>
+</html>
