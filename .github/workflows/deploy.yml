@@ -21,9 +21,9 @@ jobs:
     - name: Deploy to ECS
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_IP }} << 'EOF'
-          docker pull fahdira/frontend-uas
-          docker stop frontend || true && docker rm frontend || true
-          docker run -d --name frontend -p 80:80 fahdira/frontend-uas
+          sudo docker pull fahdira/frontend-uas
+          sudo docker stop frontend || true && docker rm frontend || true
+          sudo docker run -d --name frontend -p 80:80 fahdira/frontend-uas
         EOF
       env: 
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
