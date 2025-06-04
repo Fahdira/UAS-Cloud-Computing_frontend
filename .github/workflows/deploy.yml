@@ -21,9 +21,15 @@ jobs:
     - name: Deploy to ECS
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_IP }} << 'EOF'
-          sudo docker pull fahdira/frontend-uas
-          sudo docker stop frontend || true && docker rm frontend || true
-          sudo docker run -d --name frontend -p 80:80 fahdira/frontend-uas
+        sudo docker pull fahdira/frontend-uas
+
+        # Stop and remove the container only if it exists
+        if sudo docker ps -a --format '{{.Names}}' | grep -Eq "^frontend\$"; then
+          sudo docker stop frontend
+          sudo docker rm frontend
+        fi
+
+        sudo docker run -d --name frontend -p 80:80 fahdira/frontend-uas
         EOF
       env: 
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
