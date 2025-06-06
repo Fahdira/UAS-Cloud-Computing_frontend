@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to ECS frontend
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@47.129.255.172 << 'EOF'
+        ssh -o StrictHostKeyChecking=no ec2-user@47.130.132.63 << 'EOF'
         sudo docker pull fahdira/frontend-uas
 
         # Stop and remove the container only if it exists
